@@ -3,6 +3,7 @@ package org.jive;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
+import org.apache.commons.lang3.SerializationUtils;
 import org.jive.bean.ConfServeur;
 import org.jive.service.MessageService;
 
@@ -13,6 +14,7 @@ import com.rabbitmq.client.Consumer;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 
+import freemarkers.CfgRapport;
 import freemarkers.SampleFreemarker;
 
 public class MainReceive {
@@ -51,10 +53,11 @@ public class MainReceive {
 			@Override
 			public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties,
 					byte[] body) throws IOException {
-				String message = new String(body, "UTF-8");
-				System.out.println(" [x] Received '" + message + "'");
+				// String message = new String(body, "UTF-8");
+				CfgRapport cfgRapport = (CfgRapport) SerializationUtils.deserialize(body);
+				System.out.println(" [x] Received '" + cfgRapport + "'");
 				SampleFreemarker sampleFreemarker = new SampleFreemarker();
-				sampleFreemarker.run(message);
+				sampleFreemarker.run(cfgRapport);
 			}
 		};
 

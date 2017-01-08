@@ -8,6 +8,7 @@ import org.jive.bean.ConfServeur;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Consumer;
 
 public class MessageService {
 
@@ -44,6 +45,7 @@ public class MessageService {
 	}
 
 	public Consumer createConsumer() {
+		return null;
 
 	}
 }
