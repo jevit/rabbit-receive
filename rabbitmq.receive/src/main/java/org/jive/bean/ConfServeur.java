@@ -1,7 +1,7 @@
 package org.jive.bean;
 
 /**
- * Configuration du serveur
+ * Configuration du serveur TODO getProperties
  * 
  * @author jerem
  *
